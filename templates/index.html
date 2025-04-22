@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <a href="{{ url_for('add_car') }}" class="btn btn-primary mb-3">+ Tambah Mobil</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Merk</th>
+                <th>Model</th>
+                <th>Tahun</th>
+                <th>Detail</th>
+                <th>Hapus</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in cars %}
+            <tr>
+                <td>{{ car.id }}</td>
+                <td>{{ car.merk }}</td>
+                <td>{{ car.model }}</td>
+                <td>{{ car.tahun }}</td>
+                <td><a href="{{ url_for('car_detail', car_id=car.id) }}" class="btn btn-info btn-sm">Detail</a></td>
+                <td><a href="{{ url_for('delete_car', car_id=car.id) }}" class="btn btn-danger btn-sm">Hapus</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

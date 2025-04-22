@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Tambah Mobil Baru</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.merk.label }} {{ form.merk(class="form-control") }}<br>
+        {{ form.model.label }} {{ form.model(class="form-control") }}<br>
+        {{ form.tahun.label }} {{ form.tahun(class="form-control") }}<br>
+        {{ form.harga_dasar.label }} {{ form.harga_dasar(class="form-control") }}<br>
+        {{ form.jumlah_pinjaman.label }} {{ form.jumlah_pinjaman(class="form-control") }}<br>
+        {{ form.suku_bunga.label }} {{ form.suku_bunga(class="form-control") }}<br>
+        {{ form.submit(class="btn btn-success") }}
+    </form>
+{% endblock %}

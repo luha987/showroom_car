@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Detail Mobil</h2>
+    <ul class="list-group mb-3">
+        <li class="list-group-item"><strong>Merk:</strong> {{ car.merk }}</li>
+        <li class="list-group-item"><strong>Model:</strong> {{ car.model }}</li>
+        <li class="list-group-item"><strong>Tahun:</strong> {{ car.tahun }}</li>
+        <li class="list-group-item"><strong>Harga Dasar:</strong> Rp {{ "{:,.0f}".format(car.harga_dasar) }}</li>
+        {% if car.jumlah_pinjaman %}
+        <li class="list-group-item"><strong>Jumlah Pinjaman:</strong> Rp {{ "{:,.0f}".format(car.jumlah_pinjaman) }}</li>
+        <li class="list-group-item"><strong>Suku Bunga:</strong> {{ car.suku_bunga }}%</li>
+        {% endif %}
+        <li class="list-group-item"><strong>HPP Mobil:</strong> Rp {{ "{:,.0f}".format(hpp) }}</li>
+    </ul>
+    <a href="{{ url_for('edit_car', car_id=car.id) }}" class="btn btn-warning mt-2">Edit Mobil</a><br><br><br>
+
+    <h4>Riwayat Service</h4>
+    <a href="{{ url_for('add_service', car_id=car.id) }}" class="btn btn-primary mb-2">+ Tambah Service</a>
+    <ul class="list-group">
+        {% for service in car.services %}
+        <li class="list-group-item">
+            {{ service.tanggal }} - {{ service.deskripsi }} (Rp {{ "{:,.0f}".format(service.biaya) }})
+        </li>
+        {% else %}
+        <li class="list-group-item">Belum ada service.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

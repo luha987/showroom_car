@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Tambah Service untuk Mobil</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.tanggal.label }} {{ form.tanggal(class="form-control") }}<br>
+        {{ form.deskripsi.label }} {{ form.deskripsi(class="form-control") }}<br>
+        {{ form.biaya.label }} {{ form.biaya(class="form-control") }}<br>
+        {{ form.submit(class="btn btn-success") }}
+    </form>
+{% endblock %}
